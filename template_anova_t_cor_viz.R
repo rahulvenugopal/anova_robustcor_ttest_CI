@@ -243,7 +243,7 @@ for (i in y) {
                    add = "jitter",
                    xlab = "Species of Penguins",
                    ylab = "Flipper length (mm)",
-                   title = "We studies three species of penguins and guess what"
+                   title = "We studied three species of penguins and guess what"
     )
     print(
       p + stat_compare_means(aes(label = paste0(..method.., ", p-value = ", ..p.format..)),
