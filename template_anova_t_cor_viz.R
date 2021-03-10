@@ -34,10 +34,12 @@ plot(data)
 gg_miss_var(data) + 
   labs(y = "Look at all the missing ones") + 
   theme_radar()
+ggsave("MissingOnes.jpeg",width = 8, height = 6, dpi = 300)
 
 # Check normality and homogeneity of variation
 # Basic qqplot
 ggqqplot(data$bill_length_mm, color = "steelblue")
+ggsave("ggqq.jpeg",width = 8, height = 6, dpi = 300)
 ggqqplot(data$flipper_length_mm, color = "steelblue")
 
 # Shapiro-Wilk's method
@@ -116,46 +118,7 @@ data_plot_3 <- data_plot_2 +
   theme(plot.title.position = "plot") + 
   theme(plot.margin = margin(t = 25, r = 25, b = 10, l = 25))
 
-ggsave("Perceived_stress.jpeg", width = 9, height = 8, dpi = 300)
-
-# Setup a theme
-theme_update(
-  axis.ticks = element_line(color = "grey92"),
-  axis.ticks.length = unit(1, "lines"),
-  panel.grid.minor = element_blank(),
-  legend.title = element_text(size = 12),
-  legend.text = element_text(color = "grey30"),
-  axis.text.x = element_text(color = "grey20", size = 12),
-  axis.text.y = element_text(color = "grey20", size = 12),
-  plot.title = element_text(size = 18, face = "bold"),
-  plot.subtitle = element_text(size = 12, color = "grey30"),
-  plot.caption = element_text(size = 9, margin = margin(t = 15))
-)
-
-# Basic density plots
-# https://jakevdp.github.io/PythonDataScienceHandbook/05.13-kernel-density-estimation.html
-ggplot(data, aes(x = bill_length_mm)) + 
-  geom_density(fill = "lightblue") + 
-  theme_gray() + 
-  
-  # custom labels
-  labs(
-    title = '<b style="color:#0A9B9C;">Kernel Density Estimate</b>',
-    # Use i above for italics
-    subtitle = 'Write a small subtitle here',
-    caption = 'Data: Scholar | PhD work',
-    x = 'Write x-axis title here ', 
-    y = 'KDE (Probability density function)'
-  ) + 
-  
-  theme(
-    plot.title = ggtext::element_markdown(),
-    plot.caption = ggtext::element_markdown(),
-    axis.title.x = ggtext::element_markdown(),
-    axis.title.y = ggtext::element_markdown()
-  )
-
-ggsave("KDE.jpeg",width = 8, height = 6, dpi = 300)
+ggsave("Three Penguins.jpeg", width = 9, height = 8, dpi = 300)
 
 ##################### Robust correlations #####################
 
@@ -242,7 +205,8 @@ summary(post_test)
 # The results of post hoc
 # Method I
 par(mar = c(3, 8, 3, 3))
-plot(post_test)
+plot(post_test, col="indianred")
+
 
 # Method II
 TukeyHSD(res_aov)
@@ -256,7 +220,7 @@ post_test <- glht(res_aov,
 summary(post_test)
 # Visualising the CIs
 par(mar = c(3, 8, 3, 3))
-plot(post_test)
+plot(post_test, col="indianred")
 
 # Single ANOVA results diagram
 # Edit from here
@@ -293,6 +257,8 @@ for (i in y) {
 
 ##################### Robust t-test ####################
 formula = flipper_length_mm ~ species
+
+df <- data %>% filter(species != "Gentoo")
 # Robust yuens t test with bootstrapping
 yuenbt(formula, data=df, tr = 0.2, nboot = 1000)
 # Effect size
@@ -316,7 +282,7 @@ theme_update(
   legend.title = element_text(size = 12),
   legend.text = element_text(color = "grey30"),
   axis.text.x = element_text(color = "grey20", size = 20),
-  axis.text.y = element_text(color = "grey20", size = 20),
+  axis.text.y = element_text(color = "grey20", size = 40),
   plot.title = element_text(size = 18, face = "bold"),
   plot.subtitle = element_text(size = 12, color = "grey30"),
   plot.caption = element_text(size = 9, margin = margin(t = 15))
