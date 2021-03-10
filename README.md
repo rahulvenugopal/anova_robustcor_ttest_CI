@@ -55,5 +55,5 @@ All in one plot ANOVA with stats values
 ![Im12](https://github.com/rahulvenugopal/culture_viz/blob/main/images/All_Summary_stats_anova.png)
 
 
-R [script] (https://github.com/rahulvenugopal/culture_viz/blob/main/template_anova_t_cor_viz.R) can be found here. Customise the plot settings more color palette, sizing, spacings etc.
+R [script](https://github.com/rahulvenugopal/culture_viz/blob/main/template_anova_t_cor_viz.R) can be found here. Customise the plot settings more color palette, sizing, spacings etc.
 
