@@ -1,4 +1,4 @@
-# culture_viz
+# Dataviz for ANOVA (one way) | Robust T test | Robust correlation | CI plots | Post-hoc tests
 
 ## Generic interval or ratio types of data | ANOVA | T-tests  | Correlation
 
